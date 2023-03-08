@@ -6,28 +6,15 @@ var xyzData = [0,0,0];
 rock = 0;
 move = false;
 
-threshH = 0.55;
-threshL = 0.29;
-pastVal = 0.35;
+threshH = -0.5;
+threshL = -0.3;
+pastVal = -0.4;
 
-let d1;
-let d2;
-let d3;
-let d4;
-let d5;
-let d6;
-let f1;
-let f2;
-let f3;
-let f4;
-let f5;
-let f6;
 let des = [];
 let fun = [];
 
 
 function preload() {
-  musicFast = loadSound('sounds/fast.mp4')
   flames = loadImage('img/flames1.jpg');
   flamesAnimate = loadGif('img/flames.gif');
   des[0] = loadImage('img/des1.jpg');
@@ -49,7 +36,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(865, 750);
+  createCanvas(1600,900);
   angleMode(DEGREES);
   imageMode(CENTER);
   deg = 0;
@@ -61,29 +48,29 @@ function setup() {
 }
 
 function draw() {
+  background(0);
   image(flames, 432.5, 375);
 
   curVal = xyzData[1]
-  if (curVal >= threshH && pastVal <= threshH) {
+  if (curVal <= threshH && pastVal >= threshH) {
     rock++;
   }
-  if (curVal <= threshL && pastVal >= threshL) {
+  if (curVal >= threshL && pastVal <= threshL) {
     rock++;
   }
   pastVal = curVal
 
-  if (rock > 1 && rock < 3) {
+
+  if (rock >= 2 && rock < 4) {
     shuffle(des, true);
     shuffle(fun, true);
-    musicFast.play();
   }
 
-  if (rock > 1) {
+  if (rock > 3) {
     image(flamesAnimate, 432.5, 375);
   }
 
-
-  if (rock > 3) {
+  if (rock > 4) {
     push()
     translate(420,380);
     rotate(-5);
@@ -92,7 +79,7 @@ function draw() {
     pop();
   }
 
-  if (rock > 4) {
+  if (rock > 5) {
     push()
     translate(745,120);
     rotate(30);
@@ -101,7 +88,7 @@ function draw() {
     pop()
   }
 
-  if (rock > 5) {
+  if (rock > 6) {
     push()
     translate(290,620);
     rotate(15);
@@ -110,7 +97,7 @@ function draw() {
     pop();
   }
 
-  if (rock > 6) {
+  if (rock > 7) {
     push()
     translate(700,615);
     rotate(-20);
@@ -119,7 +106,7 @@ function draw() {
     pop();
   }
 
-  if (rock > 7) {
+  if (rock > 8) {
     push()
     translate(175,200);
     rotate(-20);
@@ -128,7 +115,7 @@ function draw() {
     pop()
   }
 
-  if (rock > 8) {
+  if (rock > 9) {
     push()
     translate(125,500);
     rotate(-35);
@@ -137,7 +124,7 @@ function draw() {
     pop();
   }
 
-  if (rock > 9) {
+  if (rock > 10) {
     push()
     translate(625,430);
     rotate(25);
@@ -146,7 +133,7 @@ function draw() {
     pop();
   }
 
-  if (rock > 10) {
+  if (rock > 12) {
     push()
     translate(500,550);
     rotate(20);
@@ -155,7 +142,7 @@ function draw() {
     pop();
   }
 
-  if (rock > 11) {
+  if (rock > 13) {
     push()
     translate(420,100);
     rotate(15);
@@ -164,7 +151,7 @@ function draw() {
     pop();
   }
 
-  if (rock > 12) {
+  if (rock > 14) {
     push()
     translate(690,290);
     rotate(-15);
@@ -173,7 +160,7 @@ function draw() {
     pop();
   }
 
-  if (rock > 13) {
+  if (rock > 15) {
     push()
     translate(70,60);
     rotate(-25);
@@ -182,7 +169,7 @@ function draw() {
     pop();
   }
 
-  if (rock > 14) {
+  if (rock > 16) {
     push()
     translate(190,350);
     rotate(25);
@@ -191,40 +178,38 @@ function draw() {
     pop();
   }
 
-  if (rock > 15 && rock < 23) {
+  if (rock > 17 && rock < 25) {
     push()
     translate(432.5,0);
     image(sleep,0,150);
     pop()
   }
 
-  if (rock > 16 && rock < 25) {
+  if (rock > 18 && rock < 27) {
     push()
     translate(432.5,0);
     image(play,0,300);
     pop()
   }
 
-  if (rock > 17 && rock < 27) {
+  if (rock > 19 && rock < 29) {
     push()
     translate(432.5,0);
     image(burn,0,450);
     pop()
   }
 
-  if (rock > 18 && rock < 29) {
+  if (rock > 20 && rock < 31) {
     push()
     translate(432.5,0);
     image(repeat,0,600);
     pop()
   }
 
-  if (rock > 30) {
+  if (rock > 32) {
     rock = 0;
-    musicFast.stop();
   }
 }
-
 
 function openHandler() {
   println("Connected to server at " + host);
